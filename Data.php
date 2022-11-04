@@ -33,14 +33,19 @@ class Data {
     public static function getData() {
 
         $data = new DateTime();
+        //Modificar o php.ini descomentando a liña:
+        //extension=intl
         //https://stackoverflow.com/questions/33869521/how-can-i-enable-php-extension-intl
         //https://www.php.net/manual/es/class.intldateformatter
         //https://www.php.net/manual/es/intldateformatter.formatobject.php
         //https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax
         //
         //https://docs.oracle.com/cd/E41183_01/DR/ICU_Time_Zones.html
-        $fmt = new IntlDateFormatter("gl_ES", IntlDateFormatter::LONG, IntlDateFormatter::FULL,
-                'Europe/Madrid', IntlDateFormatter::GREGORIAN, "l d");
+        $fmt = new IntlDateFormatter("es_ES", 
+                IntlDateFormatter::LONG,
+                IntlDateFormatter::FULL,
+                'Europe/Madrid',
+                IntlDateFormatter::GREGORIAN);
 
         $mes = $fmt->formatObject($data, "MMMM");
         $diaSemana = $fmt->formatObject($data, "EEEE");
