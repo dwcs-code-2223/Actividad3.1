@@ -10,8 +10,8 @@
  *
  * @author maria
  */
-
 class Data {
+    
 
     private static $calendario = "Calendario gregoriano";
 
@@ -19,7 +19,6 @@ class Data {
         return self::$calendario;
     }
 
-   
     public static function getHora(): string {
         return date("H:i:s");
     }
@@ -41,16 +40,21 @@ class Data {
         //https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax
         //
         //https://docs.oracle.com/cd/E41183_01/DR/ICU_Time_Zones.html
-        $fmt = new IntlDateFormatter("es_ES", 
+        $fmt = new IntlDateFormatter("es_ES",
                 IntlDateFormatter::LONG,
                 IntlDateFormatter::FULL,
                 'Europe/Madrid',
                 IntlDateFormatter::GREGORIAN);
 
-        $mes = $fmt->formatObject($data, "MMMM");
-        $diaSemana = $fmt->formatObject($data, "EEEE");
-        $dia = $fmt->formatObject($data, "dd");
-        $ano = $fmt->formatObject($data, "y");
+        // 3er param de formatObject: 
+        // locale:  La configuración regional a usar, o
+        //  null para usar la predeterminada.
+
+        $locale = "es_ES"; //gl_ES para gallego
+        $mes = $fmt->formatObject($data, "MMMM", $locale);
+        $diaSemana = $fmt->formatObject($data, "EEEE", $locale);
+        $dia = $fmt->formatObject($data, "dd", $locale);
+        $ano = $fmt->formatObject($data, "y", $locale);
 
         $cadea = "Hoxe é $diaSemana $dia de $mes do $ano";
 
@@ -64,4 +68,5 @@ echo "Usamos o calendario: " . Data::getCalendario() . "<br/>";
 
 $cadea = $data::getDataHora();
 echo $cadea;
+
 
