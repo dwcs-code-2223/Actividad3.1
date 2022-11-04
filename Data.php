@@ -19,8 +19,9 @@ class Data {
         return self::$calendario;
     }
 
+   
     public static function getHora(): string {
-        return date("H:m:s");
+        return date("H:i:s");
     }
 
     public static function getDataHora(): string {
@@ -38,7 +39,7 @@ class Data {
         //https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax
         //
         //https://docs.oracle.com/cd/E41183_01/DR/ICU_Time_Zones.html
-        $fmt = new IntlDateFormatter("es_ES", IntlDateFormatter::LONG, IntlDateFormatter::FULL,
+        $fmt = new IntlDateFormatter("gl_ES", IntlDateFormatter::LONG, IntlDateFormatter::FULL,
                 'Europe/Madrid', IntlDateFormatter::GREGORIAN, "l d");
 
         $mes = $fmt->formatObject($data, "MMMM");
