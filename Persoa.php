@@ -31,8 +31,11 @@ class Persoa {
         
         //https://www.php.net/manual/en/class.dateinterval.php
         
-        echo "$this->nome ten $interval->y anos $interval->m meses $interval->d dias, un total de $interval->days días <br/>";
-        
+        echo "$this->nome ten $interval->y anos, $interval->m meses, $interval->d dias, un total de $interval->days días <br/>";
+        //otra opción:
+        $cadea = $interval->format(" %y anos, %m meses, %d días, un total de %a días");
+        echo "$this->nome ten".
+              $cadea."<br/>";
     }
 
     public function mostrarSexo() {
